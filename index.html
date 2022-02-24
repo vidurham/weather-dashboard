@@ -4,34 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <div class="container">
+    <header class="row jumbotron bg-dark text-light">
+        <div class="col-12 text-center">
+            <h1>Weather Dashboard</h1>
+        </div>
+    </header>
 
-        <header class="row bg-dark text-light">
-            <div class="col-12 text-center">
-                <h1>Weather Dashboard</h1>
-            </div>
-        </header>
-        
-        <div class="row content-row">
-            <div class="col-12 col-md-4 col-lg-3">
+    <div class="container-fluid">
+    
+        <div class="row">
+            <div class="col-md-3">
                 <h4>Search For City:</h4>
-                <div class="input-group">
+                <div class="form-group input-group">
                     <input type="text" id="city-input" class="form-control" placeholder="Enter City Name">
-                    <div class="input-append">
-                        <button class="btn btn-info" type="button" id="search-button">
+                    <button class="btn btn-info" type="button" id="search-button">
                             <i class="fa fa-search"></i>
-                        </button>
-                    </div>
+                    </button>
                 </div>
-                <form id="history"></form>
+                <ul class="list-group history" id="history"></ul>
             </div>
-            <div class="col-12 col-md-8 col-lg-9" id="weather-area">
+            <div class="col-md-9" id="weather-area">
                 <div class="row">
                     <div class="col-12">
                         <div class="city-info">
@@ -63,43 +61,47 @@
                 </div>
                 
                 <div id="five-day" class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-md-2">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">01/28/1998</h5>
                                 <p class="card-text">Temp:</p>
+                                <p class="card-text">Wind:</p>
                                 <p class="card-text">Humidity:</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-md-2">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">01/28/1998</h5>
                                 <p class="card-text">Temp:</p>
+                                <p class="card-text">Wind:</p>
                                 <p class="card-text">Humidity:</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-md-2">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">01/28/1998</h5>
                                 <p class="card-text">Temp:</p>
+                                <p class="card-text">Wind:</p>
                                 <p class="card-text">Humidity:</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-md-2">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">01/28/1998</h5>
                                 <p class="card-text">Temp:</p>
+                                <p class="card-text">Wind:</p>
                                 <p class="card-text">Humidity:</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-md-2">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">01/28/1998</h5>
@@ -113,5 +115,6 @@
             </div>
         </div>
     </div>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
