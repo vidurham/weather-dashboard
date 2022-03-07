@@ -1,0 +1,11 @@
+.cards {
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cards p {
+    margin: 3px;
+}
