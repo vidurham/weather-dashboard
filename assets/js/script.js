@@ -75,8 +75,18 @@ var getWeather = function(cityWeather) {
 }
 
 var getIndex = function(uv) {
-    var uvIndex = uv.current.uvi
-    indexEl.innerHTML = "UV Index: " + uvIndex
+    var uvIndex = uv.current.uvi;
+    indexEl.innerHTML = "UV Index: " + uvIndex;
+    indexEl.classList.remove("green", "yellow", "red");
+    if (uvIndex < 3) {
+        indexEl.classList.add("green");
+    }
+    else if (uvIndex > 3 && uvIndex < 5) {
+        indexEl.classList.add("yellow");
+    }
+    else if (uvIndex > 5) {
+        indexEl.classList.add("red");
+    }
 }
 
 var future = function(futureWeather) {
