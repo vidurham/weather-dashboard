@@ -10,6 +10,11 @@
     margin: 3px;
 }
 
+#five-day {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .history li {
     font-weight: bold;
     padding: 6px;
@@ -19,22 +24,63 @@
     margin-top: 8px;
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.city-header {
+    align-items: center;
+}
+
 .city-info span {
     font-weight: bold;
+    margin-top: 15px;
 }
 
 .city-info img {
-    height: 20vh;
+    height: 10vh;
 }
 
 .mist {
-    background: url("/assets/images/mist.JPG");
+    background-image: url("mist.JPG");
+    background-size: 100% 100%;
+    height: 300px;
 }
 
 .clear{
-    background-image: url("/assets/images/clear.JPG");
+    background-image: url("clear.JPG");
+    background-size: 100% 100%;
+    height: 300px;
+}
+
+.light-cloud{
+    background-image: url("light-clouds.JPG");
+    background-size: 100% 100%;
+    height: 300px;
 }
 
 .cloudy{
-    background: url("/assets/images/cloudy.JPG");
+    background-image: url("cloudy.JPG");
+    background-size: 100% 100%;
+    height: 300px;
+}
+
+.snowy{
+    background-image: url("snow.JPG");
+    background-size: 100% 100%;
+    height: 300px;
+}
+
+.rainy{
+    background-image: url("rain.JPG");
+    background-size: 100% 100%;
+    height: 300px;
+}
+
+.thunder{
+    background-image: url("thunder.JPG");
+    background-size: 100% 100%;
+    height: 300px;
 }

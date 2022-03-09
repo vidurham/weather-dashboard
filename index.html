@@ -10,16 +10,16 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header class="row jumbotron bg-dark text-light">
+    <header class="row bg-dark text-light">
         <div class="col-12 text-center">
             <h1>Weather Dashboard</h1>
         </div>
     </header>
 
-    <div class="container-fluid">
+    <div class="container-fluid my-5">
     
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <h4>Search For City:</h4>
                 <div class="form-group input-group">
                     <label class="form-label" for="city"></label>
@@ -30,26 +30,20 @@
                 </div>
                 <ul class="list-group history" id="history"></ul>
             </div>
-            <div class="col-md-10" id="weather-area">
+            <div class="col-md-9" id="weather-area">
                 <div class="row">
                     <div class="col-12">
                         <div class="city-info">
-                            <div class="row">
-                                <h1 id="current-city"></h1>
-                                <img id="weather-pic" src="" alt="">
-                            </div>
-                            <p>
+                            <div class="content">
+                                <div class="row city-header">
+                                    <h1 id="current-city"></h1>
+                                    <img id="weather-pic" src="" alt="">
+                                </div>
                                 <span id="current-temp"></span>
-                            </p>
-                            <p>
                                 <span id="current-humidity"></span>
-                            </p>
-                            <p>
                                 <span id="wind-speed"></span>
-                            </p>
-                            <p>
                                 <span id="uv-index"></span>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>

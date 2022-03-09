@@ -155,8 +155,31 @@ var clickHandler = function(event) {
 }
 
 var getBackground = function(background) {
-    if (background === "01d" || background === "01n")
+    backgroundEl.classList.remove("clear", "light-cloud", "cloudy", "rainy", "thunder", "snowy", "mist", "text-light")
+    if (background === "01d" || background === "01n") {
         backgroundEl.classList.add("clear")
+    }
+    else if (background === "02d" || background === "02n") {
+        backgroundEl.classList.add("light-cloud")
+    }
+    else if (background === "03d" || background === "03n" || background === "04d" || background === "04n") {
+        backgroundEl.classList.add("cloudy")
+    }
+    else if (background === "09d" || background === "09n" || background === "10d" || background === "10n") {
+        backgroundEl.classList.add("rainy")
+        backgroundEl.classList.add("text-light")
+    }
+    else if (background === "11d" || background === "11n") {
+        backgroundEl.classList.add("thunder")
+    }
+    else if (background === "13d" || background === "13n") {
+        backgroundEl.classList.add("snowy")
+    }
+    else if (background === "50d" || background === "50n") {
+        backgroundEl.classList.add("mist")
+        backgroundEl.classList.add("text-light")
+    }
+    
 }
 
 searchButtonEl.addEventListener("click", findWeather)
