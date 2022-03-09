@@ -1,6 +1,7 @@
 var apiKey = "&appid=a35536613023136e4915b74f3f80575a"
 var inputEl = document.querySelector("#city-input")
 var searchButtonEl = document.querySelector("#search-button")
+var historyEl = document.querySelector("#history")
 var currentCityEl = document.querySelector("#current-city")
 var weatherPicEl = document.querySelector("#weather-pic")
 var temperatureEl = document.querySelector("#current-temp")
@@ -8,10 +9,26 @@ var humidityEl = document.querySelector("#current-humidity")
 var windEl = document.querySelector("#wind-speed")
 var indexEl = document.querySelector("#uv-index")
 var cardEl = document.querySelector(".card-container")
+var fiveDayEl = document.querySelector("#five-day")
+var backgroundEl = document.querySelector(".city-info")
 var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q="
 
 function findWeather() {
     var city = inputEl.value;
+    var url = queryUrl + city + apiKey;
+    
+    fetch(url)
+        .then(function(response) {
+            if (response.ok)
+                response.json().then(function(data) {
+                    getWeather(data)
+                    useOneCall(data)
+                    saveCity()
+            });
+        })   
+}
+
+function findWeather2(city) {
     var url = queryUrl + city + apiKey;
     
     fetch(url)
@@ -44,25 +61,28 @@ var getWeather = function(cityWeather) {
     currentCityEl.innerHTML = cityName;
 
     var cityWeatherTemp = Math.round(((cityWeather.main.temp - 273.15)*1.8) + 32);
-    temperatureEl.innerHTML = (cityWeatherTemp + "°F");
+    temperatureEl.innerHTML = ("Temperature: " + cityWeatherTemp + "°F");
     
     var cityWeatherHumidity = cityWeather.main.humidity;
-    humidityEl.innerHTML = (cityWeatherHumidity + "%");
+    humidityEl.innerHTML = ("Humidity: " + cityWeatherHumidity + "%");
 
     var cityWeatherWind = cityWeather.wind.speed;
-    windEl.innerHTML = (cityWeatherWind + "mph");
+    windEl.innerHTML = ("Wind Speed: " + cityWeatherWind + "mph");
 
     var cityWeatherPic = cityWeather.weather[0].icon
     weatherPicEl.setAttribute("src", "https://openweathermap.org/img/w/" + cityWeatherPic + ".png")
-
+    getBackground(cityWeatherPic)
 }
 
 var getIndex = function(uv) {
     var uvIndex = uv.current.uvi
-    indexEl.innerHTML = uvIndex
+    indexEl.innerHTML = "UV Index: " + uvIndex
 }
 
 var future = function(futureWeather) {
+    cardEl.innerHTML = "";
+    fiveDayEl.innerHTML = "";
+    fiveDayEl.innerHTML = "5-Day Forecast"
     for (var i = 1; i < 6; i++) {
         var card = document.createElement("div")
         
@@ -74,7 +94,7 @@ var future = function(futureWeather) {
 
         var forecastImg = document.createElement("img");
         forecastImg.setAttribute("src", "https://openweathermap.org/img/w/" + futureWeather.daily[i].weather[0].icon + ".png");
-        
+
         var forecastTempEl = document.createElement("p");
         var forecastTemp = ("Temp: " + Math.round(((futureWeather.daily[i].temp.max - 273.15)*1.8) + 32) + "°F");
         forecastTempEl.append(forecastTemp);
@@ -94,7 +114,7 @@ var future = function(futureWeather) {
         card.append(forecastHumidityEl);
 
         card.classList.add("cards")
-        card.classList.add("col-md-3")
+        card.classList.add("col-md-2")
 
         cardEl.append(card);
         
@@ -103,6 +123,44 @@ var future = function(futureWeather) {
     
 }
 
+var saveCity = function() {
+    var city = inputEl.value;
+    if (city === null) {
+        alert("No city entered")
+    }
+    else {
+        var savedCities = localStorage.getItem("savedCities");
+        if (savedCities === null) {
+            savedCities = [];
+        }
+        else {
+            savedCities = JSON.parse(savedCities);
+        }
+        savedCities.push(city);
+        var newCity = JSON.stringify(savedCities);
+        localStorage.setItem("savedCities", newCity)
+        searchHistory()
+    }
+}
+
+var searchHistory = function() {
+    var cityEl = document.createElement("li");
+    cityEl.innerHTML = inputEl.value;
+    historyEl.append(cityEl)
+}
+
+var clickHandler = function(event) {
+    var clickCity = event.target.textContent;
+    findWeather2(clickCity)   
+}
+
+var getBackground = function(background) {
+    if (background === "01d" || background === "01n")
+        backgroundEl.classList.add("clear")
+}
+
 searchButtonEl.addEventListener("click", findWeather)
+historyEl.addEventListener("click", clickHandler)
+
 
 

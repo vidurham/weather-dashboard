@@ -9,3 +9,32 @@
 .cards p {
     margin: 3px;
 }
+
+.history li {
+    font-weight: bold;
+    padding: 6px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    margin-top: 8px;
+}
+
+.city-info span {
+    font-weight: bold;
+}
+
+.city-info img {
+    height: 20vh;
+}
+
+.mist {
+    background: url("/assets/images/mist.JPG");
+}
+
+.clear{
+    background-image: url("/assets/images/clear.JPG");
+}
+
+.cloudy{
+    background: url("/assets/images/cloudy.JPG");
+}
